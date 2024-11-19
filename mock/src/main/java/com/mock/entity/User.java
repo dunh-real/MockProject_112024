@@ -1,4 +1,5 @@
 package com.mock.entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -20,8 +21,8 @@ public class User {
     @Column(name = "phone_number")
     String phoneNumber;
     String email;
-    Date dob;
-    String address;
+    // Date dob;
+    // String address;
     String role;
     String password;
 }
