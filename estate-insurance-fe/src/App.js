@@ -1,11 +1,8 @@
-import { Button } from "@material-tailwind/react";
+import { useRoutes } from "react-router-dom";
+import { router } from "./router";
+
 function App() {
-  return (
-    <div className="App">
-        <h1>Hello FE</h1>
-        <Button>Button</Button>
-    </div>
-  );
+  return <>{useRoutes(router)}</>;
 }
 
 export default App;
