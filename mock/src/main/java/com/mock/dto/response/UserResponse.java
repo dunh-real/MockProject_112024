@@ -1,23 +1,16 @@
-package com.mock.entity;
-import jakarta.persistence.*;
+package com.mock.dto.response;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.Date;
-
-@Entity
-@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+public class UserResponse {
     String name;
-    @Column(name = "phone_number")
     String phoneNumber;
     String email;
     Date dob;
