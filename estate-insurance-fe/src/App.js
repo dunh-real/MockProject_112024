@@ -1,9 +1,12 @@
-import { Button } from "@material-tailwind/react";
+import { Routes, Route } from "react-router-dom";
+import { SignIn } from "./pages/Auth";
+
 function App() {
   return (
     <div className="App">
-        <h1>Hello FE</h1>
-        <Button>Button</Button>
+      <Routes>
+        <Route path="/" element={<SignIn />} />
+      </Routes>
     </div>
   );
 }
