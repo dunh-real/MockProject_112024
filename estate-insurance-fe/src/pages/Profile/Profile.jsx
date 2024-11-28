@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { Navbar } from "../../components/Navbar";
 
-const ProfileForm = () => {
+const Profile = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
   const [formData, setFormData] = useState({
@@ -157,4 +157,4 @@ const ProfileForm = () => {
   );
 };
 
-export default ProfileForm;
+export default Profile;

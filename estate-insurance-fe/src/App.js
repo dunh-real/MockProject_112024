@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import { SignIn } from "./pages/Auth";
-import { Home } from "./pages/Home/Home.admin";
+import { Home } from "./pages/Home/Home";
 import { AboutUs } from "./pages/About";
 import { ContactUs } from "./pages/Contact";
-import ProfileForm from "./pages/Profile/Profile.admin";
+import { InsuranceTypes } from "./pages/Insurance";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -11,10 +12,10 @@ function App() {
       <Routes>
         <Route path="/login" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<ProfileForm />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/insurance-types" element={<></>} />
+        <Route path="/insurance-types" element={<InsuranceTypes />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
