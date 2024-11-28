@@ -6,27 +6,26 @@ import {
   Typography,
   Button,
   IconButton,
-  Input,
 } from "@material-tailwind/react";
+import logoSvg from "../assets/logo.svg";
 
 export const Navbar = () => {
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
+    const handleResize = () => window.innerWidth >= 960 && setOpenNav(false);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navList = (
-    <ul className="mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      {["About Us", "Insurance Types", "Insurance companies",].map((item) => (
+    <ul className="mt-2 flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-6">
+      {["Home", "About Us", "Contact", "Product"].map((item) => (
         <Typography
           key={item}
           as="li"
           variant="small"
-          color="blue-gray"
+          color="white"
           className="p-1 font-normal"
         >
           <a href="#" className="flex items-center">
@@ -38,49 +37,30 @@ export const Navbar = () => {
   );
 
   return (
-    <MaterialNavbar className="sticky top-0 z-10 h-max max-w-full rounded-none  py-2 ">
-    <div className="flex items-center justify-between text-blue-gray-900 mt-4">
-      {/* Logo và Input */}
-      <div className="flex items-center gap-6">
-        <Typography
-          as="a"
-          href="#"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
-        >
-          Logo
+    <MaterialNavbar
+      className="sticky top-0 z-10 h-max max-w-full py-2 px-4 lg:px-8 bg-white"
+    >
+      <div className="flex items-center justify-between text-blue-gray-900">
+        {/* Logo */}
+        <Typography as="a" href="#" className="mr-4 cursor-pointer">
+          <img src={logoSvg} alt="Company Logo" className="h-10" />
         </Typography>
-        <Input
-          type="search"
-          placeholder="Search"
-          containerProps={{
-            className: "min-w-[288px]",
-          }}
-          className="!border-t-blue-gray-300 pl-9 placeholder:text-blue-gray-300 focus:!border-blue-gray-300"
-          labelProps={{
-            className: "before:content-none after:content-none",
-          }}
-        />
-      </div>
-  
-      {/* Navigation và Buttons */}
-      <div className="flex items-center gap-4">
-        <div className="mr-4 hidden lg:block">{navList}</div>
-        <div className="flex items-center gap-x-1">
-          <Button variant="text" size="sm" className="hidden lg:inline-block">
-            <span>Log In</span>
+
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center gap-4">
+          {navList}
+          <Button variant="text" size="sm" aria-label="Log in">
+            Log In
           </Button>
-          <Button
-            variant="gradient"
-            size="sm"
-            className="hidden lg:inline-block"
-          >
-            <span>Sign in</span>
+          <Button variant="gradient" size="sm" aria-label="Sign in">
+            Sign In
           </Button>
         </div>
+
+        {/* Mobile Navigation Toggle */}
         <IconButton
           variant="text"
-          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-          ripple={false}
+          className="ml-auto h-6 w-6 text-inherit lg:hidden"
           onClick={() => setOpenNav(!openNav)}
         >
           {openNav ? (
@@ -115,19 +95,19 @@ export const Navbar = () => {
           )}
         </IconButton>
       </div>
-    </div>
-    <MobileNav open={openNav}>
-      {navList}
-      <div className="flex items-center gap-x-1">
-        <Button fullWidth variant="text" size="sm">
-          <span>Log In</span>
-        </Button>
-        <Button fullWidth variant="gradient" size="sm">
-          <span>Sign in</span>
-        </Button>
-      </div>
-    </MobileNav>
-  </MaterialNavbar>
-  
+
+      {/* Mobile Navigation */}
+      <MobileNav open={openNav}>
+        {navList}
+        <div className="flex flex-col items-center gap-2">
+          <Button fullWidth variant="text" size="sm">
+            Log In
+          </Button>
+          <Button fullWidth variant="gradient" size="sm">
+            Sign In
+          </Button>
+        </div>
+      </MobileNav>
+    </MaterialNavbar>
   );
 };
