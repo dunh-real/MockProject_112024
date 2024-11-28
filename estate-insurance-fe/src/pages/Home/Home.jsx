@@ -1,5 +1,4 @@
 import React from "react";
-import { Navbar } from "../../components/Navbar"; 
 import { CarouselWithContent } from "../../components/Carousel";
 import { Typography } from "@material-tailwind/react";
 import ImageAbout from "../../assets/about.jpg";
@@ -10,7 +9,6 @@ import Footer from "../../components/Footer.component";
 export const Home = () => {
   return (
     <div className="h-full">
-      <Navbar />
       <CarouselWithContent />
       <div className=" text-center">
         <Typography className="font-bold">
@@ -20,7 +18,7 @@ export const Home = () => {
           src={ImageAbout}
           alt="ImageAbout"
           className="mt-10 w-full object-cover object-center"
-          style={{height: "360px"}}
+          style={{ height: "360px" }}
         />
         <div className="flex justify-between items-center">
           <img
@@ -142,7 +140,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

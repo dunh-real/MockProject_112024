@@ -5,10 +5,12 @@ import { AboutUs } from "./pages/About";
 import { ContactUs } from "./pages/Contact";
 import { InsuranceTypes } from "./pages/Insurance";
 import Profile from "./pages/Profile/Profile";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Routes>
         <Route path="/login" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
