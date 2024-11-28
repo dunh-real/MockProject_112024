@@ -24,13 +24,13 @@ const getCustomerAccounts = async (req, res)=>{
 }
 }
 
-const ViewCustomerAccountInformation = async (req, res) => {
+const viewCustomerAccountInformation = async (req, res) => {
   try {
     const pool = await poolPromise;
     const result = await pool.request().query(`
         SELECT ui.*, a.*
         FROM user_info ui
-        INNER JOIN accounts a ON ui.account_id = a.id  -- -- Hoặc nếu sử dụng account_id thì đổi lại
+        INNER JOIN accounts a ON ui.account_id = a.id  -- -- Or if using account_id, change it back
         WHERE a.role = 'customer'
     `);
 
@@ -40,13 +40,13 @@ const ViewCustomerAccountInformation = async (req, res) => {
   }
 };
 
-const AddCustomerAccount = async (req, res) => {
+const addCustomerAccount = async (req, res) => {
     const {user_name, password ,role ,active_date } = req.body;
 
     try {
         const pool = await poolPromise;
 
-        // Kiểm tra nếu email đã tồn tại
+        // Check if email already exists
         const existingCustomer = await pool.request()
             .input('user_name', mssql.VarChar, user_name)
             .query('SELECT * FROM accounts WHERE user_name = @user_name;');
@@ -55,11 +55,11 @@ const AddCustomerAccount = async (req, res) => {
             return res.status(400).json({ message: 'user_name already exists' });
         }
 
-        // Mã hóa mật khẩu
+        // Encrypt passwords
         const salt = await bcrypt.genSalt(10);  // Tạo salt
-        const hashedPassword = await bcrypt.hash(password, salt);  // Mã hóa mật khẩu
+        const hashedPassword = await bcrypt.hash(password, salt);  // Encrypt passwords
 
-        // Kiểm tra nếu mật khẩu đã được mã hóa thành công và không bị rỗng
+        // Check if the password was successfully encrypted and is not empty
         if (!hashedPassword || hashedPassword === '') {
             return res.status(400).json({ message: 'Password hashing failed' });
         }
@@ -71,10 +71,10 @@ const AddCustomerAccount = async (req, res) => {
 
         const formattedDate = formatDate(active_date); // Now '2001-11-24'
 
-        // Chèn khách hàng mới vào bảng [accounts]
+        // Insert new customers into the table [accounts]
         await pool.request()
             .input('user_name', mssql.VarChar, user_name)
-            .input('password', mssql.VarChar, hashedPassword)  // Mã hóa mật khẩu trước khi chèn
+            .input('password', mssql.VarChar, hashedPassword)  // Encrypt password before inserting
             .input('role', mssql.VarChar, role)
             .input('active_date', mssql.Date, active_date,formattedDate)
             .query(`
@@ -91,7 +91,7 @@ const AddCustomerAccount = async (req, res) => {
     }
 };
 
-const EditCustomerAccount = async (req, res) => {
+const editCustomerAccount = async (req, res) => {
   const { user_name, password, role, active_date } = req.body;
   const { account_id } = req.params; // Assuming you're passing the account ID in the URL parameter for editing
 
@@ -160,61 +160,11 @@ const EditCustomerAccount = async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const userControllers = {
     getCustomerAccounts,
-    ViewCustomerAccountInformation,
-    AddCustomerAccount,
-    EditCustomerAccount
+    viewCustomerAccountInformation,
+    addCustomerAccount,
+    editCustomerAccount
 };
   module.exports = {
   userControllers,
