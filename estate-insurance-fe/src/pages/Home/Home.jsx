@@ -1,15 +1,14 @@
 import React from "react";
-import { Navbar } from "../../components/Navbar"; // Đường dẫn thay đổi tùy thuộc vào cấu trúc thư mục của bạn.
 import { CarouselWithContent } from "../../components/Carousel";
 import { Typography } from "@material-tailwind/react";
-import ImageAbout from "../../assets/about.png";
-import ImageHero from "../../assets/hero_bg.png";
-import ImageHero2 from "../../assets/hero_bg2.png";
-import Imagebabel from "../../assets/babel.png";
+import ImageAbout from "../../assets/about.jpg";
+import ImageHero from "../../assets/hero_bg.jpg";
+import ImageHero2 from "../../assets/hero_bg2.jpg";
+import Footer from "../../components/Footer.component";
+
 export const Home = () => {
   return (
     <div className="h-full">
-      <Navbar />
       <CarouselWithContent />
       <div className=" text-center">
         <Typography className="font-bold">
@@ -19,6 +18,7 @@ export const Home = () => {
           src={ImageAbout}
           alt="ImageAbout"
           className="mt-10 w-full object-cover object-center"
+          style={{ height: "360px" }}
         />
         <div className="flex justify-between items-center">
           <img
@@ -27,8 +27,8 @@ export const Home = () => {
             className="mt-10 w-1/2 flex-1 object-cover object-center"
           />
           <Typography className="font-bold flex-1">
-            <h4>OUTSTANDING SERVICES</h4>
-            <h3>WHY CHOOSE US</h3>
+            <h4>Become Sherlock Holmes</h4>
+            <h3>Just do it</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta
               ea repellendus perferendis doloribus! Unde excepturi maiores ipsa
@@ -39,8 +39,8 @@ export const Home = () => {
         </div>
         <div className="flex justify-between items-center">
           <Typography className="font-bold flex-1">
-            <h4>OUTSTANDING SERVICES</h4>
-            <h3>WHY CHOOSE US</h3>
+            <h4>Become Sherlock Holmes</h4>
+            <h3>Just do it</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta
               ea repellendus perferendis doloribus! Unde excepturi maiores ipsa
@@ -55,7 +55,7 @@ export const Home = () => {
           />
         </div>
         <Typography className="mt-20 font-bold">
-          OUTSTANDING SERVICES
+          Become Sherlock Holmes
         </Typography>
 
         <div className="mt-20 px-28 flex justify-between items-center">
@@ -72,7 +72,7 @@ export const Home = () => {
                 clip-rule="evenodd"
               />
             </svg>
-            <p className="uppercase font-bold">24/7 SUPPORT</p>
+            <p className="uppercase font-bold">Lorem, ipsum dolor.</p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
             vel rem quod sequi dolor hic, beatae quaerat? Ipsum, totam sapiente,
             cupiditate fugiat minus doloremque voluptatem, laborum aperiam alias
@@ -92,7 +92,7 @@ export const Home = () => {
               />
               <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
             </svg>
-            <p className="uppercase font-bold">trusted people</p>
+            <p className="uppercase font-bold">Lorem, ipsum dolor.</p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
             vel rem quod sequi dolor hic, beatae quaerat? Ipsum, totam sapiente,
             cupiditate fugiat minus doloremque voluptatem, laborum aperiam alias
@@ -111,7 +111,7 @@ export const Home = () => {
                 clip-rule="evenodd"
               />
             </svg>
-            <p className="uppercase font-bold">12 year experience</p>
+            <p className="uppercase font-bold">Lorem, ipsum dolor.</p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
             vel rem quod sequi dolor hic, beatae quaerat? Ipsum, totam sapiente,
             cupiditate fugiat minus doloremque voluptatem, laborum aperiam alias
@@ -132,7 +132,7 @@ export const Home = () => {
                 d="M10.05 4.575a1.575 1.575 0 1 0-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 0 1 3.15 0v1.5m-3.15 0 .075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 0 1 3.15 0V15M6.9 7.575a1.575 1.575 0 1 0-3.15 0v8.175a6.75 6.75 0 0 0 6.75 6.75h2.018a5.25 5.25 0 0 0 3.712-1.538l1.732-1.732a5.25 5.25 0 0 0 1.538-3.712l.003-2.024a.668.668 0 0 1 .198-.471 1.575 1.575 0 1 0-2.228-2.228 3.818 3.818 0 0 0-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0 1 16.35 15m.002 0h-.002"
               />
             </svg>
-            <p className="uppercase font-bold">join with us</p>
+            <p className="uppercase font-bold">Lorem, ipsum dolor.</p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
             vel rem quod sequi dolor hic, beatae quaerat? Ipsum, totam sapiente,
             cupiditate fugiat minus doloremque voluptatem, laborum aperiam alias
@@ -140,6 +140,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
